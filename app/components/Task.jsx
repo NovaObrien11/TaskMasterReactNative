@@ -8,7 +8,7 @@ import {
 import AppText from "./AppText";
 
 import React from "react";
-import Swipeable from "react-native-gesture-handler/Swipeable";
+import Swipeout from "react-native-swipeout";
 
 function Task({ title, completeBy, imageSource, onPress, renderRightActions }) {
   return (
@@ -16,13 +16,13 @@ function Task({ title, completeBy, imageSource, onPress, renderRightActions }) {
       <TouchableHighlight underlayColor={"lightgrey"} onPress={onPress}>
         <Image style={styles.image} source={{ uri: imageSource }} />
       </TouchableHighlight>
-      <Swipeable renderRightActions={renderRightActions}>
+      <Swipeout right={renderRightActions}>
         <View style={styles.detailsContainer}>
           <AppText style={styles.completeBy}>Deadline {completeBy}</AppText>
           <AppText style={styles.title}>{title}</AppText>
           <AppText style={{ color: "green" }}>Completed</AppText>
         </View>
-      </Swipeable>
+      </Swipeout>
     </View>
   );
 }
