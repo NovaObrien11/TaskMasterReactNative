@@ -5,7 +5,7 @@ export default function App() {
   return (
     <View
       style={{
-        backgroundColor: "lightgrey",
+        backgroundColor: "darkgrey",
         flex: 1,
       }}
     >

@@ -3,7 +3,6 @@ import Task from "../components/Task";
 import { FlatList, View } from "react-native";
 import Screen from "../components/Screen";
 import TestData from "../Data/TestData";
-import TaskDeleteAction from "../components/TaskDeleteAction";
 const tasks = TestData.Tasks;
 
 function TasksScreen(props) {
@@ -18,7 +17,7 @@ function TasksScreen(props) {
             imageSource={item.imageSource}
             completeBy={item.completeBy}
             onPress={() => console.log("clicked")}
-            renderRightActions={TaskDeleteAction}
+            onDelete={() => console.log("Delete clicked")}
           />
         )}
         ItemSeparatorComponent={() => (
