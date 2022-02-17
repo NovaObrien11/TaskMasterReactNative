@@ -8,8 +8,9 @@ import {
 import AppText from "./AppText";
 import React from "react";
 import Swipeout from "react-native-swipeout";
+import colors from "../config/Colors";
 
-function Task({ title, completeBy, imageSource, onPress, onDelete }) {
+function Task({id, title, completeBy, imageSource, onPress, onDelete, taskAssignedTo }) {
   const swipeOutButton = [{
     text: 'Delete',
     backgroundColor: 'red',
@@ -23,11 +24,15 @@ function Task({ title, completeBy, imageSource, onPress, onDelete }) {
       <TouchableHighlight underlayColor={"lightgrey"} onPress={onPress}>
         <Image style={styles.image} source={{ uri: imageSource }} />
       </TouchableHighlight>
-      <Swipeout right={swipeOutButton}>
+      <Swipeout style={styles.swipeout} right={swipeOutButton}>
         <View style={styles.detailsContainer}>
           <AppText style={styles.completeBy}>Deadline {completeBy}</AppText>
-          <AppText style={styles.title}>{title}</AppText>
-          <AppText style={ styles.completed }>Completed</AppText>
+            <View style={{flexDirection: "row",     justifyContent: "space-between"
+            }}>
+              <AppText style={styles.title}>{title}</AppText>
+              <AppText style={ styles.completed }>Completed</AppText>
+            </View>
+          <AppText style={ styles.assignedTo }>Assigned: {taskAssignedTo}</AppText>
         </View>
       </Swipeout>
     </View>
@@ -35,9 +40,12 @@ function Task({ title, completeBy, imageSource, onPress, onDelete }) {
 }
 
 const styles = StyleSheet.create({
-
+  assignedTo: {
+    color: colors.secondary,
+    fontSize: 14,
+  },
   completeBy: {
-    color: "dodgerblue",
+    color: colors.warning,
     fontSize: 14,
     position: "absolute",
     end: 10,
@@ -47,16 +55,12 @@ const styles = StyleSheet.create({
     color: 'green',
   },
   detailsContainer: {
-    flexDirection : "row",
     borderColor: "darkgrey",
-    backgroundColor: 'white',
+    backgroundColor: colors.primary,
     borderTopWidth: 1.5,
     borderBottomLeftRadius: 75,   
     borderTopLeftRadius: 75,
-    padding: 40,
-    justifyContent: "space-between"
-
-
+    padding: 30,
   },
   image: {
     borderTopLeftRadius: 15,
@@ -64,13 +68,21 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 200,
   },
+  swipeout: {
+    borderBottomLeftRadius: 25,
+    borderBottomRightRadius: 25,
+    backgroundColor: colors.dark,
+    paddingLeft: 10,
+    paddingVertical: 10
+  },
   task: {
-    borderRadius: 15,
-    backgroundColor: "#fff",
     marginBottom: 20,
+    borderRadius: 15,
+    
   },
   title: {
     fontSize: 24,
+    color: colors.dark,
     fontWeight: "bold",
   },
 });

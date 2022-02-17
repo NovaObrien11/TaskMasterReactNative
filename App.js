@@ -1,15 +1,8 @@
-import { View } from "react-native";
-import TasksScreen from "./app/Screens/TasksScreen";
+import AppTextInput from "./app/components/AppTextInput";
 
 export default function App() {
   return (
-    <View
-      style={{
-        backgroundColor: "darkgrey",
-        flex: 1,
-      }}
-    >
-      <TasksScreen />
-    </View>
+      <AppTextInput placeholder={"Name"} icon={"email"}/>      
   );
+  
 }

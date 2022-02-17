@@ -12,7 +12,7 @@ function TaskDetailsScreen(props) {
         <AppText style={styles.description}>{props.description}</AppText>
         <AppText style={styles.completeBy}>{props.completeBy}</AppText>
 
-        <Notes title="Don't put the cottons in the dryer"></Notes>
+        <Notes title="Don't put the cottons in the dryer"/>
       </View>
     </View>
   );
